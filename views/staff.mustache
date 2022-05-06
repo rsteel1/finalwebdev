@@ -1,0 +1,51 @@
+<html>
+    <head>
+    </head>
+    <body>
+    <a href="/">Home Page</a>
+    <a href="/logout">Logout</a>
+    <h1>Enter a new dish</h1>
+    <form method="post" role="form" action="/new">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" placeholder="Please enter a dish name" required>
+        <label for="description">Description:</label>
+        <input type="text" id="description" name="description" placeholder="Please enter a dish description" required>
+        <label for="ingredients">Ingredients:</label>
+        <input type="text" id="ingredients" name="ingredients" placeholder="Please enter dish ingredients" required>
+        <label for="price">Price:</label>
+        <input type="float" id="price" name="price" placeholder="Please enter dish price" required>
+        <label for="type">Type:</label>
+        <select name="type" id="type">
+            <option value="Dinner">Dinner</option>
+            <option value="Lunch">Lunch</option>
+        </select>
+        <label for="availability">Availability:</label>
+        <select name="availability" id="availability">
+            <option value="True">True</option>
+            <option value="False">False</option>
+        </select>
+        <br><br>
+        <input type="submit" value="Submit">
+    </form>
+    <h1>Dinner Menu</h1>
+    {{#dinner}}
+        <h2>{{name}}</h2>
+        <p>
+            Description: {{description}} <br>
+            Ingredients: {{ingredients}} <br>
+            Price: £{{price}} <br></p>
+            Availability: {{availability}} <br>
+        <a href="/edit/{{_id}}">Update Dish</a>
+    {{/dinner}}
+    <h1>Lunch Menu</h1>
+    {{#lunch}}
+        <h2>{{name}}</h2>
+        <p>
+            Description: {{description}} <br>
+            Tngredients: {{ingredients}} <br>
+            Price: £{{price}} <br></p>
+            Availability: {{availability}} <br>
+        <a href="/edit/{{_id}}">Update Dish</a>
+    {{/lunch}}
+    </body>
+</html>

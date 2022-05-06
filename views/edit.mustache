@@ -1,0 +1,46 @@
+<html>
+    <head>
+    </head>
+    <body>
+    <a href="/staff">Cancel Dish Update</a>
+    <h1>Update an Existing Dish</h1>
+    <form method="post" role="form" action="/update">
+        <input type="hidden" id="id" name="id" value={{dish._id}}>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" placeholder="Please enter a dish name" required value="{{dish.name}}">
+        <label for="description">Description</label>
+        <input type="text" id="description" name="description" placeholder="Please enter a dish description" required value="{{dish.description}}">
+        <label for="ingredients">ingredients:</label>
+        <input type="text" id="ingredients" name="ingredients" placeholder="Please enter dish ingredients" required value="{{dish.ingredients}}">
+        <label for="price">Price:</label>
+        <input type="number" id="price" name="price" placeholder="Please enter dish price" required value="{{dish.price}}">
+        <label for="type">Type:</label>
+        <select name="type" id="type" value="{{dish.type}}">
+            <option value="Dinner">Dinner</option>
+            <option value="Lunch">Lunch</option>
+        </select>
+        <label for="availability">Availability:</label>
+        <select name="availability" id="availability" value="{{dish.availability}}">
+            <option [ngValue]="true">True</option>
+            <option [ngValue]="false">False</option>
+        </select>
+        <br><br>
+        <input type="submit" value="Update">
+    </form>
+    </body>
+    <script>
+        var type = document.getElementById("type");
+        var availability = document.getElementById("availability");
+        if ("{{dish.type}}" === "Dinner"){
+            type.selectedIndex = 0;
+        } else if ("{{dish.type}}" === "Lunch"){
+            type.selectedIndex = 1;
+        }
+
+        if ({{dish.availability}}){
+            availability.selectedIndex = 0;
+        } else {
+            availability.selectedIndex = 1;
+        }
+    </script>
+</html>
